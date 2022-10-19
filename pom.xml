@@ -121,6 +121,7 @@
                 </configuration>
             </plugin>
         </plugins>
+             <finalName>KPI</finalName>
     </build>
 
 </project>
