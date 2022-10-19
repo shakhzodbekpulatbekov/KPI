@@ -171,7 +171,7 @@ public class Main extends TelegramLongPollingBot {
 
                 Date date1 = new Date();
                 SimpleDateFormat formatter1 = new SimpleDateFormat("HH:mm");
-                formatter.setTimeZone(TimeZone.getTimeZone("Asia/Tashkent"));
+                formatter1.setTimeZone(TimeZone.getTimeZone("Asia/Tashkent"));
                 String strDate1 = formatter1.format(date1);
 
 
