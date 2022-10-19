@@ -64,7 +64,7 @@ public class Main extends TelegramLongPollingBot {
             UserEntity user1 = userService.findUser(chat_id);
             String text = update.getMessage().getText();
             if (user1!=null && user1.getAdminState()==1 && !(text.equals("Xodim qo'shish")) &&
-                    !(text.equals("Xodim o'chirish")) && !(text.equals("Kelgan vaqti"))){
+                    !(text.equals("Bugungi kun")) && !(text.equals("Kelgan vaqti")) && !(text.equals("Excel fayl olish"))){
                 employment=update.getMessage().getText();
 
                 Date date = new Date();
