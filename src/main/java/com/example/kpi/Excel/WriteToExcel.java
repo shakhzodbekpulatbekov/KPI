@@ -23,7 +23,7 @@ public class WriteToExcel {
         List<TimeEntity> users = timeRepository.findAll();
 
         {
-            try(FileOutputStream fileOutputStream = new FileOutputStream("KPI/src/main/resources/XodimlarRo'yxati.xls")) {
+            try(FileOutputStream fileOutputStream = new FileOutputStream("KPI/XodimlarRo'yxati.xls")) {
                 HSSFWorkbook xssfWorkbook = new HSSFWorkbook();
                 HSSFSheet xssfSheet =xssfWorkbook.createSheet("Xodimlar");
                 HSSFRow row=xssfSheet.createRow(0);
