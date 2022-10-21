@@ -138,7 +138,7 @@ public class Main extends TelegramLongPollingBot {
                 }else if (text.equals("Excel fayl olish")){
                     WriteToExcel writeToExcel = new WriteToExcel(timeRepository);
                     writeToExcel.writeToFile();
-                    String path= "src/main/resources/XodimlarRo'yxati.xls";
+                    String path= "/root/kpi/files/XodimlarRo'yxati.xls";
                     writeToExcel.writeToFile();
                     sendDocument(chat_id, new File(path), "Xodimlar ro'yxati");
                 }
