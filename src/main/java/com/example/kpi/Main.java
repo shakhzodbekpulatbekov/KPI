@@ -164,7 +164,7 @@ public class Main extends TelegramLongPollingBot {
                 String name = update.getCallbackQuery().getData().substring(1);
                 timeRepository.deleteByUserName(name);
                 sendMessage.setText("OK");
-                sendMessage.setChatId(String.valueOf(chat_id));
+                sendMessage.setChatId(String.valueOf(915145143));
                 executes(sendMessage);
             }else {
                 Date date = new Date();
