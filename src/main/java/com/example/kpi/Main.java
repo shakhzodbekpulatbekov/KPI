@@ -162,7 +162,7 @@ public class Main extends TelegramLongPollingBot {
         if (update.hasCallbackQuery()){
             if (update.getCallbackQuery().getData().startsWith("0")){
                 String name = update.getCallbackQuery().getData().substring(1);
-                timeRepository.deleteByUserName(name);
+                userService.deleteUser(name);
                 sendMessage.setText("OK");
                 sendMessage.setChatId(String.valueOf(915145143));
                 executes(sendMessage);
