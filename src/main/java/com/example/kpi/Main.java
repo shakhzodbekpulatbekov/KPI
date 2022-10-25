@@ -86,7 +86,7 @@ public class Main extends TelegramLongPollingBot {
                 executes(sendMessage);
 
             }
-           else if (chat_id==652884977 || chat_id==915145143){
+           else if (chat_id==652884977 || chat_id==915145143 || chat_id==291105851){
                 userName=update.getMessage().getChat().getFirstName();
                 text = update.getMessage().getText();
                 if (text.equals("/start")){
