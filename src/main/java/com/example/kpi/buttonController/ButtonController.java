@@ -28,7 +28,9 @@ public class ButtonController {
         keyboardRow.add("Kelgan vaqti");
         keyboardRow1.add("Bugungi kun");
         keyboardRow1.add("Xodim qo'shish");
+        keyboardRow2.add("Kelgan vaqtini o'zgartirish");
         keyboardRow2.add("Excel fayl olish");
+        keyboardRow2.add("Xodimni o'chirish");
         keyboardRows.add(keyboardRow);
         keyboardRows.add(keyboardRow1);
         keyboardRows.add(keyboardRow2);

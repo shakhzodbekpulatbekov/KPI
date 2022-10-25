@@ -113,7 +113,7 @@ public class Main extends TelegramLongPollingBot {
                         user.setAdminState(1);
                         userRepository.save(user);
                     }
-                }else if (text.equals("Xodim o'chirish")){
+                }else if (text.equals("Xodimni o'chirish")){
                     InlineKeyboardMarkup inlineKeyboardMarkup = buttonController.deleteUser();
                     executes2(null,inlineKeyboardMarkup,"Xodimni tanlang", chat_id);
                 }else if (text.equals("Kelgan vaqti")){
@@ -142,6 +142,8 @@ public class Main extends TelegramLongPollingBot {
                     String path= "/root/kpi/files/XodimlarRo'yxati.xls";
                     writeToExcel.writeToFile();
                     sendDocument(chat_id, new File(path), "Xodimlar ro'yxati");
+                }else if (text.equals("Kelgan vaqtini o'zgartirish")){
+
                 }
 
                 else {
