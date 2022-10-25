@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface KpiRepository extends JpaRepository<KpiEntity,Integer> {
     Optional<KpiEntity> findByUserName(String name);
 
-    void deleteByUserName(String userName);
+    void removeByUserName(String name);
 }
