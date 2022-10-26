@@ -6,13 +6,18 @@ import com.example.kpi.TimeEntity.TimeEntity;
 import com.example.kpi.TimeRepository.TimeRepository;
 import com.example.kpi.UserEntity.UserEntity;
 import com.example.kpi.UserRepository.UserRepository;
+import org.apache.poi.hssf.usermodel.HSSFRow;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service
 public class UserService {
@@ -75,12 +80,26 @@ public class UserService {
         return inlineKeyboardMarkup;
     }
 
-    public void addTime(String name, String date, String time){
-        TimeEntity timeEntity = new TimeEntity();
-        timeEntity.setTime(time);
-        timeEntity.setUserName(name);
-        timeEntity.setDate(date);
-        timeRepository.save(timeEntity);
+    public boolean addTime(String name, String date, String time){
+        boolean isAdded=true;
+        List<TimeEntity> all = timeRepository.findAll();
+        for (TimeEntity entity : all) {
+            if (entity.getUserName().equals(name)) {
+                if (entity.getDate().equals(date)) {
+                    isAdded = false;
+                }
+            }
+        }
+        if (isAdded){
+            TimeEntity timeEntity = new TimeEntity();
+            timeEntity.setTime(time);
+            timeEntity.setUserName(name);
+            timeEntity.setDate(date);
+            timeRepository.save(timeEntity);
+
+        }
+        return isAdded;
+
     }
 
     public String repos(){
@@ -98,6 +117,86 @@ public class UserService {
             }
         }
         return response;
+    }
+
+    public TimeEntity time(String name){
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        formatter.setTimeZone(TimeZone.getTimeZone("Asia/Tashkent"));
+        String strDate = formatter.format(date);
+        TimeEntity timeEntity= new TimeEntity();
+        List<TimeEntity> byUserName = timeRepository.findByUserName(name);
+        for (int i = 0; i < byUserName.size(); i++) {
+            if (byUserName.get(i).getUserName().equals(name)){
+                if (byUserName.get(i).getDate().equals(strDate)){
+                    timeEntity=byUserName.get(i);
+                }
+            }
+        }
+        return timeEntity;
+
+    }
+    public InlineKeyboardMarkup info() {
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> list = new ArrayList<>();
+        inlineKeyboardMarkup.setKeyboard(list);
+        List<InlineKeyboardButton> inlineKeyboardButtons = new ArrayList<>();
+        InlineKeyboardButton inlineKeyboardButton = new InlineKeyboardButton();
+        List<KpiEntity> all = kpiRepository.findAll();
+        int helper = 0;
+
+        if (!all.isEmpty()) {
+            for (int i = 0; i < all.size(); i++) {
+                helper++;
+
+                inlineKeyboardButton = new InlineKeyboardButton();
+                inlineKeyboardButton.setText(all.get(i).getUserName());
+                inlineKeyboardButton.setCallbackData(2+all.get(i).getUserName());
+                inlineKeyboardButtons.add(inlineKeyboardButton);
+//                list.add(inlineKeyboardButtons);
+//                inlineKeyboardButtons = new ArrayList<>();
+
+                if (helper%2==0){
+                    list.add(inlineKeyboardButtons);
+                    inlineKeyboardButtons= new ArrayList<>();
+                }if (helper==all.size() && helper%2!=0){
+                    list.add(inlineKeyboardButtons);
+                    inlineKeyboardButtons=new ArrayList<>();
+                }
+            }
+
+        }
+        return inlineKeyboardMarkup;
+    }
+
+    public void infoToExcel(String name){
+        List<TimeEntity> byUserName = timeRepository.findByUserName(name);
+        {
+            try(FileOutputStream fileOutputStream = new FileOutputStream("/root/kpi/files/Xodim bo'yicha ma'lumot.xls")) {
+                HSSFWorkbook xssfWorkbook = new HSSFWorkbook();
+                HSSFSheet xssfSheet =xssfWorkbook.createSheet("Xodim");
+
+
+                HSSFRow row=xssfSheet.createRow(0);
+                row.createCell(0).setCellValue("KUN");
+                row.createCell(1).setCellValue("SOAT");
+                row.createCell(2).setCellValue("ISM");
+
+
+                for (int i = 0; i < byUserName.size(); i++) {
+                    row=xssfSheet.createRow(i+1);
+                    row.createCell(0).setCellValue(byUserName.get(i).getDate());
+                    row.createCell(1).setCellValue(byUserName.get(i).getTime());
+                    row.createCell(2).setCellValue(byUserName.get(i).getUserName());
+                }
+                xssfWorkbook.write(fileOutputStream);
+                xssfWorkbook.close();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

@@ -6,6 +6,7 @@ import com.example.kpi.TimeRepository.TimeRepository;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.CellStyle;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -23,13 +24,15 @@ public class WriteToExcel {
         List<TimeEntity> users = timeRepository.findAll();
 
         {
-            try(FileOutputStream fileOutputStream = new FileOutputStream("/root/kpi/files/XodimlarRo'yxati.xls")) {
+            try(FileOutputStream fileOutputStream = new FileOutputStream("/root/kpi/files/Xodimlar Ro'yxati.xls")) {
                 HSSFWorkbook xssfWorkbook = new HSSFWorkbook();
                 HSSFSheet xssfSheet =xssfWorkbook.createSheet("Xodimlar");
+
+
                 HSSFRow row=xssfSheet.createRow(0);
-                row.createCell(0).setCellValue("Kun");
-                row.createCell(1).setCellValue("Soat");
-                row.createCell(2).setCellValue("Ism");
+                row.createCell(0).setCellValue("KUN");
+                row.createCell(1).setCellValue("SOAT");
+                row.createCell(2).setCellValue("ISM");
 
 
                 for (int i = 0; i < users.size(); i++) {
