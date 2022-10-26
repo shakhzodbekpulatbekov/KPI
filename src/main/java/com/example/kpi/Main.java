@@ -3,6 +3,7 @@ package com.example.kpi;
 import com.example.kpi.EmpolymentService.EmploymentService;
 import com.example.kpi.Excel.WriteToExcel;
 import com.example.kpi.KpiRepository.KpiRepository;
+import com.example.kpi.TimeEntity.TimeEntity;
 import com.example.kpi.TimeRepository.TimeRepository;
 import com.example.kpi.UserEntity.UserEntity;
 import com.example.kpi.UserRepository.UserRepository;
@@ -21,6 +22,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Optional;
 import java.util.TimeZone;
 @Component
 public class Main extends TelegramLongPollingBot {
@@ -116,7 +118,8 @@ public class Main extends TelegramLongPollingBot {
                 }else if (text.equals("Xodimni o'chirish")){
                     InlineKeyboardMarkup inlineKeyboardMarkup = buttonController.deleteUser();
                     executes2(null,inlineKeyboardMarkup,"Xodimni tanlang", chat_id);
-                }else if (text.equals("Kelgan vaqti")){
+                }
+                else if (text.equals("Kelgan vaqti")){
                     InlineKeyboardMarkup inlineKeyboardMarkup = userService.userButton();
                     if (inlineKeyboardMarkup==null){
                         sendMessage.setText("Xodimlar ro'yxati bo'sh");
@@ -143,7 +146,8 @@ public class Main extends TelegramLongPollingBot {
                     writeToExcel.writeToFile();
                     sendDocument(chat_id, new File(path), "Xodimlar ro'yxati");
                 }else if (text.equals("Kelgan vaqtini o'zgartirish")){
-
+                    InlineKeyboardMarkup inlineKeyboardMarkup = buttonController.editUserTime();
+                    executes2(null,inlineKeyboardMarkup,"Xodimni tanlang! ‼️Faqat bugungi kunni o'zgartirish mumkin‼️",chat_id);
                 }
 
                 else {
@@ -160,12 +164,14 @@ public class Main extends TelegramLongPollingBot {
             }
         }
         if (update.hasCallbackQuery()){
-            if (update.getCallbackQuery().getData().startsWith("0")){
+            if (update.getCallbackQuery().getData().startsWith("1")){
                 String name = update.getCallbackQuery().getData().substring(1);
-                userService.deleteUser(name);
-                sendMessage.setText("OK");
-                sendMessage.setChatId(String.valueOf(915145143));
-                executes(sendMessage);
+                Optional<TimeEntity> byUserName = timeRepository.findByUserName(name);
+                TimeEntity timeEntity = new TimeEntity();
+                if (byUserName.isPresent()){
+                    timeEntity= byUserName.get();
+                }
+
             }else {
                 Date date = new Date();
                 SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
