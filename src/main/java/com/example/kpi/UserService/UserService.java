@@ -99,13 +99,6 @@ public class UserService {
         }
         return response;
     }
-    public void deleteUser(String name){
-        List<KpiEntity> all = kpiRepository.findAll();
-        for (int i = 0; i < all.size(); i++) {
-            if (all.get(i).getUserName().equals(name)){
-                kpiRepository.removeByUserName(name);
-            }
-        }
-    }
+
 }
 
