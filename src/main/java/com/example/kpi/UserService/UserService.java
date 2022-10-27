@@ -83,9 +83,9 @@ public class UserService {
     public boolean addTime(String name, String date, String time){
         boolean isAdded=true;
         List<TimeEntity> all = timeRepository.findAll();
-        for (TimeEntity entity : all) {
-            if (entity.getUserName().equals(name)) {
-                if (entity.getDate().equals(date)) {
+        for (int i = 0; i < all.size(); i++) {
+            if (all.get(i).getUserName().equals(name)) {
+                if (all.get(i).getDate().equals(date)) {
                     isAdded = false;
                 }
             }
