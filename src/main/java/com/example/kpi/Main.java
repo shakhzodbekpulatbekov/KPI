@@ -60,15 +60,6 @@ public class Main extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
 
-        SendMessage sendMessage1 = new SendMessage();
-        sendMessage1.setText("Botda yangilanishlar bo'lganligi sababli qaytadan /start tugmasini bosin");
-        sendMessage1.setChatId(String.valueOf(652884977));
-        executes(sendMessage1);
-        sendMessage1.setChatId(String.valueOf(291105851));
-        executes(sendMessage1);
-        sendMessage1.setChatId(String.valueOf(915145143));
-        executes(sendMessage1);
-
         Long chat_id=0L;
         String userName;
         String employment="";
