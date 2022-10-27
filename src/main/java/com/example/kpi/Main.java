@@ -49,12 +49,12 @@ public class Main extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return "t.me/loretto_kpi_bot";
+        return "t.me/kpi_loretto_bot";
     }
 
     @Override
     public String getBotToken() {
-        return "5694848831:AAEbBMp40JVhmHgSgXazp86lI2d3-KO509o";
+        return "5750470538:AAGrIoS8FzPvAmOlwV0v9cmMtdYKntarYXg";
     }
 
     @Override
