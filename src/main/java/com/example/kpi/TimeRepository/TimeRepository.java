@@ -12,6 +12,4 @@ public interface TimeRepository extends JpaRepository<TimeEntity,Integer> {
     void deleteByUserName(String name);
     List<TimeEntity>findByUserName(String name);
 
-    Optional<TimeEntity> findByUserName(String name);
-
 }
