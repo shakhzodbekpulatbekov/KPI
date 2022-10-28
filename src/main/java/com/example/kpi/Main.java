@@ -239,14 +239,13 @@ public class Main extends TelegramLongPollingBot {
                     UserEntity user = userService.findUser(chat_id);
                     user.setAdminState(0);
                     userRepository.save(user);
-                    executes(sendMessage);
                 }else {
                     TimeEntity1 timeEntity1=new TimeEntity1();
                     timeEntity1.setTime(timeEntity.getTime());
                     timeEntity1.setDate(timeEntity.getDate());
                     timeEntity1.setUserName(timeEntity.getUserName());
                     timeRepository1.save(timeEntity1);
-
+                    sendMessage=new SendMessage();
                     sendMessage.setText(timeEntity.getUserName()+" bugun "+timeEntity.getTime()+" da kelgan\nYangi vaqtni kiriting! " +
                             "namuna: (00:00)");
                     sendMessage.setChatId(String.valueOf(chat_id));
