@@ -109,6 +109,9 @@ public class Main extends TelegramLongPollingBot {
                     if (text.equals("/start")){
                         UserEntity user = userService.findUser(chat_id);
                         if (user!=null){
+                            UserEntity user2 = userService.findUser(chat_id);
+                            user2.setAdminState(0);
+                            userRepository.save(user2);
                             ReplyKeyboardMarkup menu = buttonController.menu();
                             executes2(menu,null,"Kerakli bo'limni tanlang!",chat_id);
                         }else {
