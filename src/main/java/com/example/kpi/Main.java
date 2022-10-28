@@ -228,19 +228,31 @@ public class Main extends TelegramLongPollingBot {
                 timeRepository1.deleteAll();
                 String name = update.getCallbackQuery().getData().substring(1);
                 TimeEntity timeEntity = userService.time(name);
-                TimeEntity1 timeEntity1=new TimeEntity1();
-                timeEntity1.setTime(timeEntity.getTime());
-                timeEntity1.setDate(timeEntity.getDate());
-                timeEntity1.setUserName(timeEntity.getUserName());
-                timeRepository1.save(timeEntity1);
+                if (timeEntity.getTime()==null){
+                    sendMessage =new SendMessage();
+                    sendMessage.setChatId(String.valueOf(chat_id));
+                    sendMessage.setText("Avval hozirgi vaqt hisobida kiriting!,\n Keyin o'zgartirish mumkin");
+                    executes(sendMessage);
+                    UserEntity user = userService.findUser(chat_id);
+                    user.setAdminState(0);
+                    userRepository.save(user);
+                    executes(sendMessage);
+                }else {
+                    TimeEntity1 timeEntity1=new TimeEntity1();
+                    timeEntity1.setTime(timeEntity.getTime());
+                    timeEntity1.setDate(timeEntity.getDate());
+                    timeEntity1.setUserName(timeEntity.getUserName());
+                    timeRepository1.save(timeEntity1);
 
-                sendMessage.setText(timeEntity.getUserName()+" bugun "+timeEntity.getTime()+" da kelgan\nYangi vaqtni kiriting! " +
-                        "namuna: (00:00)");
-                sendMessage.setChatId(String.valueOf(chat_id));
-                UserEntity user = userService.findUser(chat_id);
-                user.setAdminState(5);
-                userRepository.save(user);
-                executes(sendMessage);
+                    sendMessage.setText(timeEntity.getUserName()+" bugun "+timeEntity.getTime()+" da kelgan\nYangi vaqtni kiriting! " +
+                            "namuna: (00:00)");
+                    sendMessage.setChatId(String.valueOf(chat_id));
+                    UserEntity user = userService.findUser(chat_id);
+                    user.setAdminState(5);
+                    userRepository.save(user);
+                    executes(sendMessage);
+                }
+
             }else if (update.getCallbackQuery().getData().startsWith("2")){
                 String name = update.getCallbackQuery().getData().substring(1);
                 userService.infoToExcel(name);
