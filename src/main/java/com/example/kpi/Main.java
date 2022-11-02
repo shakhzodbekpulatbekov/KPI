@@ -150,7 +150,7 @@ public class Main extends TelegramLongPollingBot {
 
                     }else if (text.equals("Kelgan vaqtini o'zgartirish")) {
                         InlineKeyboardMarkup inlineKeyboardMarkup = buttonController.editTime();
-                        executes2(null,inlineKeyboardMarkup,"Xodimni tanlang! ‼️Faqat " +
+                        executes2(null,inlineKeyboardMarkup,"Xodimni tanlang! ‼️Faqat ❗️" +
                                 "bugungi kunni o'zgartirish mumkin ‼️",chat_id);
                     }
 
@@ -196,10 +196,7 @@ public class Main extends TelegramLongPollingBot {
                             sendMessage.setChatId(String.valueOf(chat_id));
                             executes(sendMessage);
                         }
-
-
                     }
-
                     else {
                         sendMessage=new SendMessage();
                         sendMessage.setText("Noto'g'ri buyruq");
@@ -287,8 +284,6 @@ public class Main extends TelegramLongPollingBot {
                 sendMessage.setChatId(String.valueOf(chatId));
                 executes(sendMessage);
             }
-
-
         }
     }
     public void executes(SendMessage sendMessage) {
