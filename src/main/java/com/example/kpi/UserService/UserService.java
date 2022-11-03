@@ -204,7 +204,7 @@ public class UserService {
                 Font font = xssfWorkbook.createFont();
                 font.setBold(true);
 //                font.setUnderline(Font.U_SINGLE);
-//                font.setColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
+                font.setColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
                 style1.setFont(font);
 
                 HSSFRow row=xssfSheet.createRow(0);
