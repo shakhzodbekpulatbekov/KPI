@@ -68,7 +68,6 @@ public class WriteToExcel {
 
                      cell=row.createCell(1);
                      cell.setCellValue(users.get(i).getTime());
-                    cell.setCellStyle(style);
 
                     if (!(users.get(i).getTime().startsWith("08"))){
                         style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.LIGHT_ORANGE.getIndex());
