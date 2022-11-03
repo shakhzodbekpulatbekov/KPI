@@ -209,7 +209,7 @@ public class UserService {
 
 
                 CellStyle style2=xssfWorkbook.createCellStyle();
-                style2.setFillForegroundColor(HSSFColor.HSSFColorPredefined.LIGHT_GREEN.getIndex());
+                style2.setFillForegroundColor(HSSFColor.HSSFColorPredefined.GREEN.getIndex());
                 style2.setFillPattern(FillPatternType.SOLID_FOREGROUND);
                 style2.setBorderBottom(BorderStyle.THIN);
                 style2.setBottomBorderColor(IndexedColors.BLACK.getIndex());
