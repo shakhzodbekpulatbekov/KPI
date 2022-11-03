@@ -34,8 +34,6 @@ public class WriteToExcel {
                 HSSFSheet xssfSheet =xssfWorkbook.createSheet("Xodimlar");
 
                 CellStyle style=xssfWorkbook.createCellStyle();
-                style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.LIGHT_ORANGE.getIndex());
-                style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
                 style.setBorderBottom(BorderStyle.THIN);
                 style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
                 style.setBorderTop(BorderStyle.THIN);
@@ -44,6 +42,18 @@ public class WriteToExcel {
                 style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
                 style.setBorderRight(BorderStyle.THIN);
                 style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+
+                CellStyle style1=xssfWorkbook.createCellStyle();
+                style1.setFillForegroundColor(HSSFColor.HSSFColorPredefined.LIGHT_ORANGE.getIndex());
+                style1.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                style1.setBorderBottom(BorderStyle.THIN);
+                style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style1.setBorderTop(BorderStyle.THIN);
+                style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style1.setBorderLeft(BorderStyle.THIN);
+                style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style1.setBorderRight(BorderStyle.THIN);
+                style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
 
                 HSSFRow row=xssfSheet.createRow(0);
                 HSSFCell cell=row.createCell(0);
@@ -70,9 +80,8 @@ public class WriteToExcel {
                      cell.setCellValue(users.get(i).getTime());
 
                     if (!(users.get(i).getTime().startsWith("08"))){
-                        cell.setCellStyle(style);
+                        cell.setCellStyle(style1);
                     }
-                    style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
                     cell=row.createCell(2);
                     cell.setCellValue(users.get(i).getUserName());
                     cell.setCellStyle(style);
