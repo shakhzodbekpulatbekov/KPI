@@ -220,10 +220,10 @@ public class UserService {
                 style2.setBorderRight(BorderStyle.THIN);
                 style2.setBottomBorderColor(IndexedColors.BLACK.getIndex());
                 Font font1 = xssfWorkbook.createFont();
-//                font1.setBold(true);
-////                font.setUnderline(Font.U_SINGLE);
-//                font1.setColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
-//                style2.setFont(font1);
+                font1.setBold(true);
+//                font.setUnderline(Font.U_SINGLE);
+                font1.setColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
+                style2.setFont(font1);
 
                 HSSFRow row=xssfSheet.createRow(0);
                 HSSFCell cell=row.createCell(0);
