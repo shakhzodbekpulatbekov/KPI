@@ -8,8 +8,10 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
+import org.apache.poi.ss.usermodel.IndexedColors;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -31,29 +33,52 @@ public class WriteToExcel {
                 HSSFWorkbook xssfWorkbook = new HSSFWorkbook();
                 HSSFSheet xssfSheet =xssfWorkbook.createSheet("Xodimlar");
 
+                CellStyle style=xssfWorkbook.createCellStyle();
+                style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
+                style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                style.setBorderBottom(BorderStyle.THIN);
+                style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style.setBorderTop(BorderStyle.THIN);
+                style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style.setBorderLeft(BorderStyle.THIN);
+                style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style.setBorderRight(BorderStyle.THIN);
+                style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
 
                 HSSFRow row=xssfSheet.createRow(0);
-                row.createCell(0).setCellValue("KUN");
-                row.createCell(1).setCellValue("SOAT");
-                row.createCell(2).setCellValue("ISM");
+                HSSFCell cell=row.createCell(0);
+                cell.setCellValue("KUN");
+                cell.setCellStyle(style);
 
-                CellStyle style=xssfWorkbook.createCellStyle();
-//                style.setFillBackgroundColor(IndexedColors.RED1.getIndex());
-                style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.LIGHT_ORANGE.getIndex());
-                style.setFillPattern(FillPatternType.FINE_DOTS);
+                cell=row.createCell(1);
+                cell.setCellValue("SOAT");
+                cell.setCellStyle(style);
+
+                cell=row.createCell(2);
+                cell.setCellValue("ISM");
+                cell.setCellStyle(style);
+
 
 
                 for (int i = 0; i < users.size(); i++) {
                     row=xssfSheet.createRow(i+1);
-                    row.createCell(0).setCellValue(users.get(i).getDate());
+                    cell=row.createCell(0);
+                    cell.setCellValue(users.get(i).getDate());
+                    cell.setCellStyle(style);
 
-                    HSSFCell cell=row.createCell(0);
-                    cell.setCellValue(users.get(i).getTime());
+                     cell=row.createCell(1);
+                     cell.setCellValue(users.get(i).getTime());
+                    cell.setCellStyle(style);
+
                     if (!(users.get(i).getTime().startsWith("08"))){
+                        style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.LIGHT_ORANGE.getIndex());
                         cell.setCellStyle(style);
                     }
-                    row.createCell(1).setCellValue(users.get(i).getTime());
-                    row.createCell(2).setCellValue(users.get(i).getUserName());
+                    style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
+                    cell=row.createCell(2);
+                    cell.setCellValue(users.get(i).getUserName());
+                    cell.setCellStyle(style);
+
                 }
                 xssfWorkbook.write(fileOutputStream);
                 xssfWorkbook.close();
