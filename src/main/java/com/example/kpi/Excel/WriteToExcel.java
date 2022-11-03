@@ -81,9 +81,9 @@ public class WriteToExcel {
                      cell=row.createCell(1);
                      cell.setCellValue(users.get(i).getTime());
 
-                    if (!(users.get(i).getTime().startsWith("08")) || !(users.get(i).getTime().equals("09:00"))){
+                    if (!(users.get(i).getTime().startsWith("08"))){
                         cell.setCellStyle(style1);
-                    }else {cell.setCellStyle(style);}
+                    }
                     cell=row.createCell(2);
                     cell.setCellValue(users.get(i).getUserName());
                     cell.setCellStyle(style);

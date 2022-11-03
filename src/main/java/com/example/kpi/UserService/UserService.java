@@ -231,9 +231,9 @@ public class UserService {
                     cell=row.createCell(1);
                     cell.setCellValue(byUserName.get(i).getTime());
 
-                    if (!(byUserName.get(i).getTime().startsWith("08")) || !(byUserName.get(i).getTime().equals("09:00"))){
+                    if (!(byUserName.get(i).getTime().startsWith("08"))){
                         cell.setCellStyle(style1);
-                    }else {cell.setCellStyle(style);}
+                    }
                     cell=row.createCell(2);
                     cell.setCellValue(byUserName.get(i).getUserName());
                     cell.setCellStyle(style);
