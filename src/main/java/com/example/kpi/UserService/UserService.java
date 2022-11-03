@@ -203,7 +203,7 @@ public class UserService {
                 style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
                 Font font = xssfWorkbook.createFont();
                 font.setBold(true);
-                font.setUnderline(Font.U_SINGLE);
+//                font.setUnderline(Font.U_SINGLE);
                 font.setColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
                 style1.setFont(font);
 
