@@ -6,9 +6,12 @@ import com.example.kpi.TimeEntity.TimeEntity;
 import com.example.kpi.TimeRepository.TimeRepository;
 import com.example.kpi.UserEntity.UserEntity;
 import com.example.kpi.UserRepository.UserRepository;
+import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.*;
 import org.springframework.stereotype.Service;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
@@ -177,17 +180,64 @@ public class UserService {
                 HSSFSheet xssfSheet =xssfWorkbook.createSheet("Xodim");
 
 
+                CellStyle style=xssfWorkbook.createCellStyle();
+                style.setBorderBottom(BorderStyle.THIN);
+                style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style.setBorderTop(BorderStyle.THIN);
+                style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style.setBorderLeft(BorderStyle.THIN);
+                style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style.setBorderRight(BorderStyle.THIN);
+                style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+
+                CellStyle style1=xssfWorkbook.createCellStyle();
+                style1.setFillForegroundColor(HSSFColor.HSSFColorPredefined.RED.getIndex());
+                style1.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                style1.setBorderBottom(BorderStyle.THIN);
+                style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style1.setBorderTop(BorderStyle.THIN);
+                style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style1.setBorderLeft(BorderStyle.THIN);
+                style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style1.setBorderRight(BorderStyle.THIN);
+                style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                Font font = xssfWorkbook.createFont();
+                font.setBold(true);
+                font.setUnderline(Font.U_SINGLE);
+                font.setColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
+                style1.setFont(font);
+
                 HSSFRow row=xssfSheet.createRow(0);
-                row.createCell(0).setCellValue("KUN");
-                row.createCell(1).setCellValue("SOAT");
-                row.createCell(2).setCellValue("ISM");
+                HSSFCell cell=row.createCell(0);
+                cell.setCellValue("KUN");
+                cell.setCellStyle(style);
+
+                cell=row.createCell(1);
+                cell.setCellValue("SOAT");
+                cell.setCellStyle(style);
+
+                cell=row.createCell(2);
+                cell.setCellValue("ISM");
+                cell.setCellStyle(style);
+
 
 
                 for (int i = 0; i < byUserName.size(); i++) {
                     row=xssfSheet.createRow(i+1);
-                    row.createCell(0).setCellValue(byUserName.get(i).getDate());
-                    row.createCell(1).setCellValue(byUserName.get(i).getTime());
-                    row.createCell(2).setCellValue(byUserName.get(i).getUserName());
+                    cell=row.createCell(0);
+                    cell.setCellValue(byUserName.get(i).getDate());
+                    cell.setCellStyle(style);
+
+                    cell=row.createCell(1);
+                    cell.setCellValue(byUserName.get(i).getTime());
+
+                    if (!(byUserName.get(i).getTime().startsWith("08"))){
+                        cell.setCellStyle(style1);
+                    }
+                    cell=row.createCell(2);
+                    cell.setCellValue(byUserName.get(i).getUserName());
+                    cell.setCellStyle(style);
+
                 }
                 xssfWorkbook.write(fileOutputStream);
                 xssfWorkbook.close();
