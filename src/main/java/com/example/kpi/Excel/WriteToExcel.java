@@ -34,7 +34,7 @@ public class WriteToExcel {
                 HSSFSheet xssfSheet =xssfWorkbook.createSheet("Xodimlar");
 
                 CellStyle style=xssfWorkbook.createCellStyle();
-                style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
+                style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.LIGHT_ORANGE.getIndex());
                 style.setFillPattern(FillPatternType.SOLID_FOREGROUND);
                 style.setBorderBottom(BorderStyle.THIN);
                 style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
@@ -70,7 +70,6 @@ public class WriteToExcel {
                      cell.setCellValue(users.get(i).getTime());
 
                     if (!(users.get(i).getTime().startsWith("08"))){
-                        style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.LIGHT_ORANGE.getIndex());
                         cell.setCellStyle(style);
                     }
                     style.setFillForegroundColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
