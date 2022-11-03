@@ -41,7 +41,7 @@ public class WriteToExcel {
                 style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
 
                 CellStyle style1=xssfWorkbook.createCellStyle();
-                style1.setFillForegroundColor(HSSFColor.HSSFColorPredefined.LIGHT_ORANGE.getIndex());
+                style1.setFillForegroundColor(HSSFColor.HSSFColorPredefined.RED.getIndex());
                 style1.setFillPattern(FillPatternType.SOLID_FOREGROUND);
                 style1.setBorderBottom(BorderStyle.THIN);
                 style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
