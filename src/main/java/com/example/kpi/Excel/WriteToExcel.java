@@ -8,10 +8,7 @@ import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.ss.usermodel.BorderStyle;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.FillPatternType;
-import org.apache.poi.ss.usermodel.IndexedColors;
+import org.apache.poi.ss.usermodel.*;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -54,6 +51,11 @@ public class WriteToExcel {
                 style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
                 style1.setBorderRight(BorderStyle.THIN);
                 style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                Font font = xssfWorkbook.createFont();
+                font.setBold(true);
+                font.setUnderline(Font.U_SINGLE);
+                font.setColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
+                style1.setFont(font);
 
                 HSSFRow row=xssfSheet.createRow(0);
                 HSSFCell cell=row.createCell(0);
