@@ -233,7 +233,7 @@ public class UserService {
 
                     if (!(byUserName.get(i).getTime().startsWith("08"))){
                         cell.setCellStyle(style1);
-                    }
+                    }else cell.setCellStyle(style);
                     cell=row.createCell(2);
                     cell.setCellValue(byUserName.get(i).getUserName());
                     cell.setCellStyle(style);

@@ -83,7 +83,7 @@ public class WriteToExcel {
 
                     if (!(users.get(i).getTime().startsWith("08"))){
                         cell.setCellStyle(style1);
-                    }
+                    }else cell.setCellStyle(style);
                     cell=row.createCell(2);
                     cell.setCellValue(users.get(i).getUserName());
                     cell.setCellStyle(style);
