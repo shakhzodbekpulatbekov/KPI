@@ -51,11 +51,11 @@ public class WriteToExcel {
                 style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
                 style1.setBorderRight(BorderStyle.THIN);
                 style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
-                Font font = xssfWorkbook.createFont();
-                font.setBold(true);
-//                font.setUnderline(Font.U_SINGLE);
-                font.setColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
-                style1.setFont(font);
+//                Font font = xssfWorkbook.createFont();
+//                font.setBold(true);
+////                font.setUnderline(Font.U_SINGLE);
+//                font.setColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
+//                style1.setFont(font);
 
                 CellStyle style2=xssfWorkbook.createCellStyle();
                 style2.setFillForegroundColor(HSSFColor.HSSFColorPredefined.GREEN.getIndex());

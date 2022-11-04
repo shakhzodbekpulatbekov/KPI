@@ -201,12 +201,11 @@ public class UserService {
                 style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
                 style1.setBorderRight(BorderStyle.THIN);
                 style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
-                Font font = xssfWorkbook.createFont();
-                font.setBold(true);
-//                font.setUnderline(Font.U_SINGLE);
-                font.setColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
-                style1.setFont(font);
-
+//                Font font = xssfWorkbook.createFont();
+//                font.setBold(true);
+////                font.setUnderline(Font.U_SINGLE);
+//                font.setColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
+//                style1.setFont(font);
 
                 CellStyle style2=xssfWorkbook.createCellStyle();
                 style2.setFillForegroundColor(HSSFColor.HSSFColorPredefined.GREEN.getIndex());
@@ -266,9 +265,16 @@ public class UserService {
                     cell=row.createCell(1);
                     cell.setCellValue(byUserName.get(i).getTime());
 
-                    if (!(byUserName.get(i).getTime().startsWith("08"))){
-                        cell.setCellStyle(style3);
-                    }else cell.setCellStyle(style);
+                    Integer integer = Integer.valueOf(byUserName.get(i).getTime().substring(3));
+                    String time=byUserName.get(i).getTime();
+
+                    if ((time.startsWith("08"))){
+                        cell.setCellStyle(style2);
+                    }else if (time.startsWith("09")&& integer<16){
+                        cell.setCellStyle(style1);
+                    }
+                    else cell.setCellStyle(style3);
+
                     cell=row.createCell(2);
                     cell.setCellValue(byUserName.get(i).getUserName());
                     cell.setCellStyle(style);
