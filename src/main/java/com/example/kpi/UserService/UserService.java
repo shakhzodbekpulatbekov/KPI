@@ -267,18 +267,40 @@ public class UserService {
 
                     Integer integer = Integer.valueOf(byUserName.get(i).getTime().substring(3));
                     String time=byUserName.get(i).getTime();
+                    if(byUserName.get(i).getUserName().equals("Go'zal")){
+                        if ((time.startsWith("08"))){
+                            cell.setCellStyle(style2);
+                        }else if (time.startsWith("09")&& integer<31){
+                            cell.setCellStyle(style1);
+                        }
+                        else cell.setCellStyle(style3);
 
-                    if ((time.startsWith("08"))){
-                        cell.setCellStyle(style2);
-                    }else if (time.startsWith("09")&& integer<16){
-                        cell.setCellStyle(style1);
+                        cell=row.createCell(2);
+                        cell.setCellValue(byUserName.get(i).getUserName());
+                        cell.setCellStyle(style);
+                    }else if(byUserName.get(i).getUserName().equals("Muzaffar")){
+                        if ((time.startsWith("08"))|| time.startsWith("09") || time.startsWith("10")){
+                            cell.setCellStyle(style2);
+                        }else if (time.startsWith("11")&& integer<16){
+                            cell.setCellStyle(style1);
+                        }
+                        else cell.setCellStyle(style3);
+
+                        cell=row.createCell(2);
+                        cell.setCellValue(byUserName.get(i).getUserName());
+                        cell.setCellStyle(style);
+                    }else {
+                        if ((time.startsWith("08"))){
+                            cell.setCellStyle(style2);
+                        }else if (time.startsWith("09")&& integer<16){
+                            cell.setCellStyle(style1);
+                        }
+                        else cell.setCellStyle(style3);
+
+                        cell=row.createCell(2);
+                        cell.setCellValue(byUserName.get(i).getUserName());
+                        cell.setCellStyle(style);
                     }
-                    else cell.setCellStyle(style3);
-
-                    cell=row.createCell(2);
-                    cell.setCellValue(byUserName.get(i).getUserName());
-                    cell.setCellStyle(style);
-
                 }
                 xssfWorkbook.write(fileOutputStream);
                 xssfWorkbook.close();

@@ -117,10 +117,10 @@ public class WriteToExcel {
 
                     Integer integer = Integer.valueOf(users.get(i).getTime().substring(3));
                     String time=users.get(i).getTime();
-
+                if(users.get(i).getUserName().equals("Go'zal")){
                     if ((time.startsWith("08"))){
                         cell.setCellStyle(style2);
-                    }else if (time.startsWith("09")&& integer<16){
+                    }else if (time.startsWith("09")&& integer<31){
                         cell.setCellStyle(style1);
                     }
                     else cell.setCellStyle(style3);
@@ -128,8 +128,30 @@ public class WriteToExcel {
                     cell=row.createCell(2);
                     cell.setCellValue(users.get(i).getUserName());
                     cell.setCellStyle(style);
+                }else if(users.get(i).getUserName().equals("Muzaffar")){
+                    if ((time.startsWith("08"))|| time.startsWith("09") || time.startsWith("10")){
+                        cell.setCellStyle(style2);
+                    }else if (time.startsWith("11")&& integer<16){
+                        cell.setCellStyle(style1);
+                    }
+                    else cell.setCellStyle(style3);
 
+                    cell=row.createCell(2);
+                    cell.setCellValue(users.get(i).getUserName());
+                    cell.setCellStyle(style);
+                }else {
+                        if ((time.startsWith("08"))){
+                        cell.setCellStyle(style2);
+                        }else if (time.startsWith("09")&& integer<16){
+                        cell.setCellStyle(style1);
+                        }
+                         else cell.setCellStyle(style3);
+
+                             cell=row.createCell(2);
+                             cell.setCellValue(users.get(i).getUserName());
+                             cell.setCellStyle(style);
                 }
+            }
                 xssfWorkbook.write(fileOutputStream);
                 xssfWorkbook.close();
             } catch (FileNotFoundException e) {
