@@ -120,10 +120,11 @@ public class WriteToExcel {
 
                     if ((time.startsWith("08"))){
                         cell.setCellStyle(style2);
-                    }else if (time.startsWith("09")&& integer>15){
-                        cell.setCellStyle(style3);
+                    }else if (time.startsWith("09")&& integer<16){
+                        cell.setCellStyle(style1);
                     }
-                    else cell.setCellStyle(style);
+                    else cell.setCellStyle(style3);
+
                     cell=row.createCell(2);
                     cell.setCellValue(users.get(i).getUserName());
                     cell.setCellStyle(style);
