@@ -104,54 +104,77 @@ public class WriteToExcel {
                 cell.setCellValue("ISM");
                 cell.setCellStyle(style2);
 
+                cell=row.createCell(3);
+                cell.setCellValue("Sababli");
+                cell.setCellStyle(style2);
+
 
 
                 for (int i = 0; i < users.size(); i++) {
-                    row=xssfSheet.createRow(i+1);
-                    cell=row.createCell(0);
+                    int helper = 0;
+
+                    row = xssfSheet.createRow(i + 1);
+                    cell = row.createCell(0);
                     cell.setCellValue(users.get(i).getDate());
                     cell.setCellStyle(style);
 
-                     cell=row.createCell(1);
-                     cell.setCellValue(users.get(i).getTime());
+                    cell = row.createCell(1);
+                    cell.setCellValue(users.get(i).getTime());
+                    if (users.get(i).getTime().endsWith(".")) {
+                        helper = 1;
+                    }
 
                     Integer integer = Integer.valueOf(users.get(i).getTime().substring(3));
-                    String time=users.get(i).getTime();
-                if(users.get(i).getUserName().equals("Go'zal")){
-                    if ((time.startsWith("08"))){
-                        cell.setCellStyle(style2);
-                    }else if (time.startsWith("09")&& integer<31){
-                        cell.setCellStyle(style1);
-                    }
-                    else cell.setCellStyle(style3);
-
-                    cell=row.createCell(2);
-                    cell.setCellValue(users.get(i).getUserName());
-                    cell.setCellStyle(style);
-                }else if(users.get(i).getUserName().equals("Muzaffar")){
-                    if ((time.startsWith("08"))|| time.startsWith("09") || time.startsWith("10")){
-                        cell.setCellStyle(style2);
-                    }else if (time.startsWith("11")&& integer<16){
-                        cell.setCellStyle(style1);
-                    }
-                    else cell.setCellStyle(style3);
-
-                    cell=row.createCell(2);
-                    cell.setCellValue(users.get(i).getUserName());
-                    cell.setCellStyle(style);
-                }else {
-                        if ((time.startsWith("08"))){
-                        cell.setCellStyle(style2);
-                        }else if (time.startsWith("09")&& integer<16){
-                        cell.setCellStyle(style1);
+                    String time = users.get(i).getTime();
+                    if (users.get(i).getUserName().equals("Go'zal")) {
+                        if ((time.startsWith("08"))) {
+                            cell.setCellStyle(style2);
+                        } else if (time.startsWith("09") && integer < 31) {
+                            cell.setCellStyle(style1);
+                        } else {
+                            cell.setCellStyle(style3);
                         }
-                         else cell.setCellStyle(style3);
+                        if (time.endsWith(".")) {
+                            helper = 1;
+                        }
 
-                             cell=row.createCell(2);
-                             cell.setCellValue(users.get(i).getUserName());
-                             cell.setCellStyle(style);
+                        cell = row.createCell(2);
+                        cell.setCellValue(users.get(i).getUserName());
+                        cell.setCellStyle(style);
+                    } else if (users.get(i).getUserName().equals("Muzaffar")) {
+                        if ((time.startsWith("08")) || time.startsWith("09") || time.startsWith("10")) {
+                            cell.setCellStyle(style2);
+
+                        } else if (time.startsWith("11") && integer < 16) {
+                            cell.setCellStyle(style1);
+                        } else {
+                            cell.setCellStyle(style3);
+                        }
+                        if (time.endsWith(".")) {
+                            helper = 1;
+                        }
+
+                        cell = row.createCell(2);
+                        cell.setCellValue(users.get(i).getUserName());
+                        cell.setCellStyle(style);
+                    } else {
+                        if ((time.startsWith("08"))) {
+                            cell.setCellStyle(style2);
+                        } else if (time.startsWith("09") && integer < 16) {
+                            cell.setCellStyle(style1);
+                        } else {
+                            cell.setCellStyle(style3);
+                        }
+
+                        cell = row.createCell(2);
+                        cell.setCellValue(users.get(i).getUserName());
+                        cell.setCellStyle(style);
+                    }
+                    cell = row.createCell(3);
+                    if (helper == 1) {
+                        cell.setCellValue("Sababli");
+                    }else cell.setCellValue("-");
                 }
-            }
                 xssfWorkbook.write(fileOutputStream);
                 xssfWorkbook.close();
             } catch (FileNotFoundException e) {

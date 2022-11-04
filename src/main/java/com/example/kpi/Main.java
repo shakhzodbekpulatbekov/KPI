@@ -260,9 +260,16 @@ public class Main extends TelegramLongPollingBot {
             }else if (update.getCallbackQuery().getData().startsWith("3")){
                 String data = update.getCallbackQuery().getData();
                 TimeEntity time = userService.time(data.substring(1));
-                String time1 = time.getTime();
-                time.setTime(time1+".");
-                timeRepository.save(time);
+                if (time==null){
+                    sendMessage=new SendMessage();
+                    sendMessage.setChatId(String.valueOf(chat_id));
+                    sendMessage.setText("Avval kelgan vaqtini kiriting");
+                    executes(sendMessage);
+                }else {
+                    String time1 = time.getTime();
+                    time.setTime(time1+".");
+                    timeRepository.save(time);
+                }
             }
 
             else if (update.getCallbackQuery().getData().startsWith("2")){
