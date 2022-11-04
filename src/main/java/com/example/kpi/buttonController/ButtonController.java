@@ -31,6 +31,7 @@ public class ButtonController {
         keyboardRow1.add("Xodim qo'shish");
         keyboardRow2.add("Excel fayl olish");
         keyboardRow2.add("Kelgan vaqtini o'zgartirish");
+        keyboardRow3.add("Sababli");
         keyboardRow3.add("Xodimlar bo'yicha statistika");
         keyboardRows.add(keyboardRow);
         keyboardRows.add(keyboardRow1);
@@ -54,6 +55,30 @@ public class ButtonController {
                 inlineKeyboardButton = new InlineKeyboardButton();
                 inlineKeyboardButton.setText(all.get(i).getUserName());
                 inlineKeyboardButton.setCallbackData("1"+all.get(i).getUserName());
+                inlineKeyboardButtons.add(inlineKeyboardButton);
+                list.add(inlineKeyboardButtons);
+                inlineKeyboardButtons = new ArrayList<>();
+
+            }
+
+        }
+        return inlineKeyboardMarkup;
+    }
+
+    public InlineKeyboardMarkup addReason() {
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> list = new ArrayList<>();
+        inlineKeyboardMarkup.setKeyboard(list);
+        List<InlineKeyboardButton> inlineKeyboardButtons = new ArrayList<>();
+        InlineKeyboardButton inlineKeyboardButton = new InlineKeyboardButton();
+        List<KpiEntity> all = kpiRepository.findAll();
+        int helper = 0;
+
+        if (!all.isEmpty()) {
+            for (int i = 0; i < all.size(); i++) {
+                inlineKeyboardButton = new InlineKeyboardButton();
+                inlineKeyboardButton.setText(all.get(i).getUserName());
+                inlineKeyboardButton.setCallbackData("3"+all.get(i).getUserName());
                 inlineKeyboardButtons.add(inlineKeyboardButton);
                 list.add(inlineKeyboardButtons);
                 inlineKeyboardButtons = new ArrayList<>();

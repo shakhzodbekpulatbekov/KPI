@@ -169,7 +169,11 @@ public class Main extends TelegramLongPollingBot {
                         executes2(null,info,"\uD83D\uDD35\uD83D\uDD35Xodimni tanlang!" +
                                 "\uD83D\uDD35\uD83D\uDD35",chat_id);
 
-                    }else if (text.equals("Excel fayl olish")){
+                    }else if (text.equals("Sababli")){
+
+                    }
+
+                        else if (text.equals("Excel fayl olish")){
                         WriteToExcel writeToExcel = new WriteToExcel(timeRepository);
                         writeToExcel.writeToFile();
                         String path= "/root/kpi/files/Xodimlar Ro'yxati.xls";
@@ -252,7 +256,15 @@ public class Main extends TelegramLongPollingBot {
                     executes(sendMessage);
                 }
 
-            }else if (update.getCallbackQuery().getData().startsWith("2")){
+            }else if (update.getCallbackQuery().getData().startsWith("3")){
+                String data = update.getCallbackQuery().getData();
+                TimeEntity time = userService.time(data.substring(1));
+                String time1 = time.getTime();
+                time.setTime(time1+".");
+                timeRepository.save(time);
+            }
+
+            else if (update.getCallbackQuery().getData().startsWith("2")){
                 String name = update.getCallbackQuery().getData().substring(1);
                 userService.infoToExcel(name);
                 String path= "/root/kpi/files/Xodim bo'yicha ma'lumot.xls";
