@@ -124,7 +124,7 @@ public class WriteToExcel {
                         helper = 1;
                     }
 
-                    Integer integer = Integer.valueOf(users.get(i).getTime().substring(3));
+                    int integer = Integer.parseInt(users.get(i).getTime().substring(3));
                     String time = users.get(i).getTime();
                     if (users.get(i).getUserName().equals("Go'zal")) {
                         if ((time.startsWith("08"))) {
