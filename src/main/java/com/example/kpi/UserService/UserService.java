@@ -191,7 +191,7 @@ public class UserService {
                 style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
 
                 CellStyle style1=xssfWorkbook.createCellStyle();
-                style1.setFillForegroundColor(HSSFColor.HSSFColorPredefined.RED.getIndex());
+                style1.setFillForegroundColor(HSSFColor.HSSFColorPredefined.YELLOW.getIndex());
                 style1.setFillPattern(FillPatternType.SOLID_FOREGROUND);
                 style1.setBorderBottom(BorderStyle.THIN);
                 style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
@@ -225,6 +225,23 @@ public class UserService {
                 font1.setColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
                 style2.setFont(font1);
 
+                CellStyle style3=xssfWorkbook.createCellStyle();
+                style3.setFillForegroundColor(HSSFColor.HSSFColorPredefined.RED.getIndex());
+                style3.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                style3.setBorderBottom(BorderStyle.THIN);
+                style3.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style3.setBorderTop(BorderStyle.THIN);
+                style3.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style3.setBorderLeft(BorderStyle.THIN);
+                style3.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style3.setBorderRight(BorderStyle.THIN);
+                style3.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                Font font2 = xssfWorkbook.createFont();
+                font2.setBold(true);
+//                font.setUnderline(Font.U_SINGLE);
+                font2.setColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
+                style3.setFont(font2);
+
                 HSSFRow row=xssfSheet.createRow(0);
                 HSSFCell cell=row.createCell(0);
                 cell.setCellValue("KUN");
@@ -250,7 +267,7 @@ public class UserService {
                     cell.setCellValue(byUserName.get(i).getTime());
 
                     if (!(byUserName.get(i).getTime().startsWith("08"))){
-                        cell.setCellStyle(style1);
+                        cell.setCellStyle(style3);
                     }else cell.setCellStyle(style);
                     cell=row.createCell(2);
                     cell.setCellValue(byUserName.get(i).getUserName());
