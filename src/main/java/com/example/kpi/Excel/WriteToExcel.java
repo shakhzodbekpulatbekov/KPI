@@ -170,10 +170,10 @@ public class WriteToExcel {
                         cell.setCellValue(users.get(i).getUserName());
                         cell.setCellStyle(style);
                     }
-                    cell = row.createCell(3);
-                    if (helper == 1) {
-                        cell.setCellValue("Sababli");
-                    }else cell.setCellValue("-");
+//                    cell = row.createCell(3);
+//                    if (helper == 1) {
+//                        cell.setCellValue("Sababli");
+//                    }else cell.setCellValue("-");
                 }
                 xssfWorkbook.write(fileOutputStream);
                 xssfWorkbook.close();
