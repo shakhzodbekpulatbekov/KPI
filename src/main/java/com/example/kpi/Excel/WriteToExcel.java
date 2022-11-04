@@ -111,7 +111,6 @@ public class WriteToExcel {
 
 
                 for (int i = 0; i < users.size(); i++) {
-                    int helper=0;
 
                     row=xssfSheet.createRow(i+1);
                     cell=row.createCell(0);
@@ -120,11 +119,9 @@ public class WriteToExcel {
 
                      cell=row.createCell(1);
                      cell.setCellValue(users.get(i).getTime());
-                     if (users.get(i).getTime().endsWith(".")){
-                         helper=1;
-                     }
 
-                    int integer = Integer.parseInt(users.get(i).getTime().substring(3));
+
+                    Integer integer = Integer.valueOf(users.get(i).getTime().substring(3));
                     String time=users.get(i).getTime();
                 if(users.get(i).getUserName().equals("Go'zal")){
                     if ((time.startsWith("08"))){
@@ -134,9 +131,6 @@ public class WriteToExcel {
                     }
                     else {
                         cell.setCellStyle(style3);
-                    }
-                    if (time.endsWith(".")){
-                        helper=1;
                     }
 
                     cell=row.createCell(2);
@@ -150,9 +144,6 @@ public class WriteToExcel {
                         cell.setCellStyle(style1);
                     }
                     else {cell.setCellStyle(style3);}
-                    if (time.endsWith(".")){
-                        helper=1;
-                    }
 
                     cell=row.createCell(2);
                     cell.setCellValue(users.get(i).getUserName());
@@ -169,11 +160,6 @@ public class WriteToExcel {
                              cell.setCellValue(users.get(i).getUserName());
                              cell.setCellStyle(style);
                 }
-                cell=row.createCell(3);
-                if (helper==1){
-                    cell.setCellValue("Sababli");
-                }else cell.setCellValue("-");
-
             }
                 xssfWorkbook.write(fileOutputStream);
                 xssfWorkbook.close();
