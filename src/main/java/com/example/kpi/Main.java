@@ -269,6 +269,10 @@ public class Main extends TelegramLongPollingBot {
                     String time1 = time.getTime();
                     time.setReason("Sababli");
                     timeRepository.save(time);
+                    sendMessage=new SendMessage();
+                    sendMessage.setText("OK");
+                    sendMessage.setChatId(String.valueOf(chat_id));
+                    executes(sendMessage);
                 }
             }
 
