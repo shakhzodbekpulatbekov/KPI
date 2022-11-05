@@ -264,15 +264,14 @@ public class Main extends TelegramLongPollingBot {
                     sendMessage=new SendMessage();
                     sendMessage.setChatId(String.valueOf(chat_id));
                     sendMessage.setText("Avval kelgan vaqtini kiriting");
-                    executes(sendMessage);
                 }else {
                     time.setReason("Sababli");
                     timeRepository.save(time);
                     sendMessage=new SendMessage();
                     sendMessage.setText("OK");
                     sendMessage.setChatId(String.valueOf(chat_id));
-                    executes(sendMessage);
                 }
+                executes(sendMessage);
             }
 
             else if (update.getCallbackQuery().getData().startsWith("2")){
