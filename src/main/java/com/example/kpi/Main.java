@@ -266,7 +266,6 @@ public class Main extends TelegramLongPollingBot {
                     sendMessage.setText("Avval kelgan vaqtini kiriting");
                     executes(sendMessage);
                 }else {
-                    String time1 = time.getTime();
                     time.setReason("Sababli");
                     timeRepository.save(time);
                     sendMessage=new SendMessage();

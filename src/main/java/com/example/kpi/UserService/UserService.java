@@ -254,9 +254,14 @@ public class UserService {
                 cell.setCellValue("ISM");
                 cell.setCellStyle(style2);
 
+                cell=row.createCell(3);
+                cell.setCellValue("Sababli");
+                cell.setCellStyle(style2);
+
 
 
                 for (int i = 0; i < byUserName.size(); i++) {
+
                     row=xssfSheet.createRow(i+1);
                     cell=row.createCell(0);
                     cell.setCellValue(byUserName.get(i).getDate());
@@ -264,6 +269,7 @@ public class UserService {
 
                     cell=row.createCell(1);
                     cell.setCellValue(byUserName.get(i).getTime());
+
 
                     Integer integer = Integer.valueOf(byUserName.get(i).getTime().substring(3));
                     String time=byUserName.get(i).getTime();
@@ -273,7 +279,9 @@ public class UserService {
                         }else if (time.startsWith("09")&& integer<31){
                             cell.setCellStyle(style1);
                         }
-                        else cell.setCellStyle(style3);
+                        else {
+                            cell.setCellStyle(style3);
+                        }
 
                         cell=row.createCell(2);
                         cell.setCellValue(byUserName.get(i).getUserName());
@@ -281,10 +289,11 @@ public class UserService {
                     }else if(byUserName.get(i).getUserName().equals("Muzaffar")){
                         if ((time.startsWith("08"))|| time.startsWith("09") || time.startsWith("10")){
                             cell.setCellStyle(style2);
+
                         }else if (time.startsWith("11")&& integer<16){
                             cell.setCellStyle(style1);
                         }
-                        else cell.setCellStyle(style3);
+                        else {cell.setCellStyle(style3);}
 
                         cell=row.createCell(2);
                         cell.setCellValue(byUserName.get(i).getUserName());
@@ -295,12 +304,21 @@ public class UserService {
                         }else if (time.startsWith("09")&& integer<16){
                             cell.setCellStyle(style1);
                         }
-                        else cell.setCellStyle(style3);
+                        else {cell.setCellStyle(style3);}
 
                         cell=row.createCell(2);
                         cell.setCellValue(byUserName.get(i).getUserName());
                         cell.setCellStyle(style);
                     }
+
+                    cell=row.createCell(3);
+                    String reason = byUserName.get(i).getReason();
+                    if (reason==null){
+                        cell.setCellValue("-");
+                    }else {
+                        cell.setCellValue(byUserName.get(i).getReason());
+                    }
+                    cell.setCellStyle(style);
                 }
                 xssfWorkbook.write(fileOutputStream);
                 xssfWorkbook.close();
