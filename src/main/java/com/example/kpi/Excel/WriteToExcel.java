@@ -160,6 +160,14 @@ public class WriteToExcel {
                              cell.setCellValue(users.get(i).getUserName());
                              cell.setCellStyle(style);
                 }
+
+                cell=row.createCell(3);
+                    String reason = users.get(i).getReason();
+                    if (reason==null){
+                        cell.setCellValue("-");
+                    }else
+                    cell.setCellValue(users.get(i).getReason());
+
             }
                 xssfWorkbook.write(fileOutputStream);
                 xssfWorkbook.close();

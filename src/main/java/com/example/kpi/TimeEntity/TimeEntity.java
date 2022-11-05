@@ -24,4 +24,7 @@ public class TimeEntity {
     @Column(name = "time")
     private String  time;
 
+    @Column(name = "reason")
+    private String reason;
+
 }

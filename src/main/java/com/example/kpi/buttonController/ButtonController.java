@@ -31,7 +31,7 @@ public class ButtonController {
         keyboardRow1.add("Xodim qo'shish");
         keyboardRow2.add("Excel fayl olish");
         keyboardRow2.add("Kelgan vaqtini o'zgartirish");
-//        keyboardRow3.add("Sababli");
+        keyboardRow3.add("Sababli");
         keyboardRow3.add("Xodimlar bo'yicha statistika");
         keyboardRows.add(keyboardRow);
         keyboardRows.add(keyboardRow1);

@@ -267,7 +267,7 @@ public class Main extends TelegramLongPollingBot {
                     executes(sendMessage);
                 }else {
                     String time1 = time.getTime();
-                    time.setTime(time1+".");
+                    time.setReason("Sababli");
                     timeRepository.save(time);
                 }
             }
