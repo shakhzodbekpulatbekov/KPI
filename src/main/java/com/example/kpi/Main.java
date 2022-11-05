@@ -260,7 +260,7 @@ public class Main extends TelegramLongPollingBot {
             }else if (update.getCallbackQuery().getData().startsWith("3")){
                 String data = update.getCallbackQuery().getData();
                 TimeEntity time = userService.time(data.substring(1));
-                if (time==null){
+                if (time.getUserName()==null){
                     sendMessage=new SendMessage();
                     sendMessage.setChatId(String.valueOf(chat_id));
                     sendMessage.setText("Avval kelgan vaqtini kiriting");
