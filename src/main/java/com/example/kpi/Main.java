@@ -277,7 +277,7 @@ public class Main extends TelegramLongPollingBot {
                 String name = update.getCallbackQuery().getData().substring(1);
                 WriteToExcel writeToExcel=new WriteToExcel(timeRepository);
                 writeToExcel.writeToFile(name);
-                String path= "/root/kpi/files/Xodim bo'yicha ma'lumot.xls";
+                String path= "/root/kpi/files/Xodimlar ro'yxati.xls";
                 sendDocument(chat_id, new File(path), name+" ma'lumot");
 
             }else {
