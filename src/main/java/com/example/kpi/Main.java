@@ -81,7 +81,7 @@ public class Main extends TelegramLongPollingBot {
             if (user1!=null && user1.getAdminState()==1 && !(text.equals("Xodim qo'shish")) &&
                     !(text.equals("Bugungi kun")) && !(text.equals("Kelgan vaqti")) &&
                     !(text.equals("Excel fayl olish")) && !(text.equals("/start")) && !(text.equals
-                    ("Kelgan vaqtini o'zgartirish")) && !(text.equals("Xodimlar bo'yicha statistika"))){
+                    ("Kelgan vaqtini o'zgartirish")) && !(text.equals("Xodimlar bo'yicha statistika")) && !(text.equals("Sababli"))){
                 employment=update.getMessage().getText();
 
                 Date date = new Date();

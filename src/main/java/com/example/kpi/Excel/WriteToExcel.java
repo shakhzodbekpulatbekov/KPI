@@ -14,7 +14,9 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WriteToExcel {
     final TimeRepository timeRepository;
@@ -26,11 +28,7 @@ public class WriteToExcel {
     public void writeToFile(String name){
 
         List<TimeEntity> users = new ArrayList<>();
-        if (name==null){
-            users=timeRepository.findAll();
-        }else {
-            users = timeRepository.findByUserName(name);
-        }
+
 
         {
             try(FileOutputStream fileOutputStream = new FileOutputStream("/root/kpi/files/Xodimlar Ro'yxati.xls")) {
