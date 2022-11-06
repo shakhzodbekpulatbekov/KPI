@@ -176,9 +176,8 @@ public class Main extends TelegramLongPollingBot {
 
                         else if (text.equals("Excel fayl olish")){
                         WriteToExcel writeToExcel = new WriteToExcel(timeRepository);
-                        writeToExcel.writeToFile();
+                        writeToExcel.writeToFile(null);
                         String path= "/root/kpi/files/Xodimlar Ro'yxati.xls";
-                        writeToExcel.writeToFile();
                         sendDocument(chat_id, new File(path), "Xodimlar ro'yxati");
                     }else if (user1.getAdminState()==5){
                         String text2 = update.getMessage().getText();
@@ -276,7 +275,8 @@ public class Main extends TelegramLongPollingBot {
 
             else if (update.getCallbackQuery().getData().startsWith("2")){
                 String name = update.getCallbackQuery().getData().substring(1);
-                userService.infoToExcel(name);
+                WriteToExcel writeToExcel=new WriteToExcel(timeRepository);
+                writeToExcel.writeToFile(name);
                 String path= "/root/kpi/files/Xodim bo'yicha ma'lumot.xls";
                 sendDocument(chat_id, new File(path), name+" ma'lumot");
 
