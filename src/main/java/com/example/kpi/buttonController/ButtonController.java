@@ -124,36 +124,4 @@ public class ButtonController {
         }
         return inlineKeyboardMarkup;
     }
-    public InlineKeyboardMarkup editUserTime() {
-        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
-        List<List<InlineKeyboardButton>> list = new ArrayList<>();
-        inlineKeyboardMarkup.setKeyboard(list);
-        List<InlineKeyboardButton> inlineKeyboardButtons = new ArrayList<>();
-        InlineKeyboardButton inlineKeyboardButton = new InlineKeyboardButton();
-        List<KpiEntity> all = kpiRepository.findAll();
-        int helper = 0;
-
-        if (!all.isEmpty()) {
-            for (int i = 0; i < all.size(); i++) {
-                helper++;
-
-                inlineKeyboardButton = new InlineKeyboardButton();
-                inlineKeyboardButton.setText(all.get(i).getUserName());
-                inlineKeyboardButton.setCallbackData(1+all.get(i).getUserName());
-                inlineKeyboardButtons.add(inlineKeyboardButton);
-//                list.add(inlineKeyboardButtons);
-//                inlineKeyboardButtons = new ArrayList<>();
-
-                if (helper%2==0){
-                    list.add(inlineKeyboardButtons);
-                    inlineKeyboardButtons= new ArrayList<>();
-                }if (helper==all.size() && helper%2!=0){
-                    list.add(inlineKeyboardButtons);
-                    inlineKeyboardButtons=new ArrayList<>();
-                }
-            }
-
-        }
-        return inlineKeyboardMarkup;
-    }
 }
