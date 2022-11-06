@@ -26,8 +26,12 @@ public class WriteToExcel {
     }
 
     public void writeToFile(String name){
-
-        List<TimeEntity> users = timeRepository.findAll();
+        List<TimeEntity> users;
+            if(name==null) {
+            users = timeRepository.findAll();
+        }else {
+                users=timeRepository.findByUserName(name);
+            }
 
 
         {
