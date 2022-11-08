@@ -171,7 +171,7 @@ public class Main extends TelegramLongPollingBot {
 
                     }else if (text.equals("Sababli")){
                         InlineKeyboardMarkup inlineKeyboardMarkup = buttonController.addReason();
-                        executes2(null,inlineKeyboardMarkup,"Sababli",chat_id);
+                        executes2(null,inlineKeyboardMarkup,"\uD83D\uDD35\uD83D\uDD35Sababli\uD83D\uDD35\uD83D\uDD35",chat_id);
                     }
 
                         else if (text.equals("Excel fayl olish")){
