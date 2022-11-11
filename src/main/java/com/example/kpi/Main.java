@@ -134,7 +134,17 @@ public class Main extends TelegramLongPollingBot {
                             user.setAdminState(1);
                             userRepository.save(user);
                         }
-                    }else if (text.equals("Xodim o'chirish")){
+                    }else if (text.equals("/xabar")){
+                        UserEntity user = userService.findUser(chat_id);
+                        user.setAdminState(5);
+                        userRepository.save(user);
+                        sendMessage=new SendMessage();
+                        sendMessage.setChatId(String.valueOf(chat_id));
+                        sendMessage.setText("Xabarni yuboring !");
+                        executes(sendMessage);
+                    }
+
+                    else if (text.equals("Xodim o'chirish")){
     //                    InlineKeyboardMarkup inlineKeyboardMarkup = buttonController.deleteUser();
     //                    executes2(null,inlineKeyboardMarkup,"Xodimni tanlang", chat_id);
                     }else if (text.equals("Kelgan vaqti")){
@@ -202,10 +212,25 @@ public class Main extends TelegramLongPollingBot {
                         }
                     }
                     else {
-                        sendMessage=new SendMessage();
-                        sendMessage.setText("Noto'g'ri buyruq");
-                        sendMessage.setChatId(String.valueOf(chat_id));
-                        executes(sendMessage);
+                        UserEntity user = userService.findUser(chat_id);
+                        int adminState = user.getAdminState();
+                        if (adminState==5){
+                            List<UserEntity> all = userRepository.findAll();
+                            sendMessage=new SendMessage();
+                            sendMessage.setText(text);
+
+                            for (int i = 0; i < all.size(); i++) {
+                                sendMessage.setChatId(all.get(i).getChatId());
+                                executes(sendMessage);
+                            }
+                            user.setAdminState(0);
+                            userRepository.save(user);
+                        }else {
+                            sendMessage = new SendMessage();
+                            sendMessage.setText("Noto'g'ri buyruq");
+                            sendMessage.setChatId(String.valueOf(chat_id));
+                            executes(sendMessage);
+                        }
                     }
                 }
                 else {
