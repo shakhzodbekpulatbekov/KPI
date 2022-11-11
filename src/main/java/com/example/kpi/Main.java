@@ -136,7 +136,7 @@ public class Main extends TelegramLongPollingBot {
                         }
                     }else if (text.equals("/xabar")){
                         UserEntity user = userService.findUser(chat_id);
-                        user.setAdminState(5);
+                        user.setAdminState(6);
                         userRepository.save(user);
                         sendMessage=new SendMessage();
                         sendMessage.setChatId(String.valueOf(chat_id));
@@ -214,7 +214,7 @@ public class Main extends TelegramLongPollingBot {
                     else {
                         UserEntity user = userService.findUser(chat_id);
                         int adminState = user.getAdminState();
-                        if (adminState==5){
+                        if (adminState==6){
                             List<UserEntity> all = userRepository.findAll();
                             sendMessage=new SendMessage();
                             sendMessage.setText(text);
