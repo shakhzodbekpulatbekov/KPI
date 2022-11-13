@@ -32,7 +32,7 @@ public class WriteToExcel {
         if (name == null) {
             users = timeRepository.findAllSorted();
         } else {
-            users = timeRepository.findByUserName(name);
+            users = timeRepository.findByUserNameAndId(name);
         }
 
 
