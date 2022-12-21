@@ -43,22 +43,83 @@ public class WriteToExcel {
 
 
 
+                CellStyle style=xssfWorkbook.createCellStyle();
+                style.setBorderBottom(BorderStyle.THIN);
+                style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style.setBorderTop(BorderStyle.THIN);
+                style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style.setBorderLeft(BorderStyle.THIN);
+                style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style.setBorderRight(BorderStyle.THIN);
+                style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+
+                CellStyle style1=xssfWorkbook.createCellStyle();
+                style1.setFillForegroundColor(HSSFColor.HSSFColorPredefined.YELLOW.getIndex());
+                style1.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                style1.setBorderBottom(BorderStyle.THIN);
+                style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style1.setBorderTop(BorderStyle.THIN);
+                style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style1.setBorderLeft(BorderStyle.THIN);
+                style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style1.setBorderRight(BorderStyle.THIN);
+                style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+//                Font font = xssfWorkbook.createFont();
+//                font.setBold(true);
+////                font.setUnderline(Font.U_SINGLE);
+//                font.setColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
+//                style1.setFont(font);
+
+                CellStyle style2=xssfWorkbook.createCellStyle();
+                style2.setFillForegroundColor(HSSFColor.HSSFColorPredefined.GREEN.getIndex());
+                style2.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                style2.setBorderBottom(BorderStyle.THIN);
+                style2.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style2.setBorderTop(BorderStyle.THIN);
+                style2.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style2.setBorderLeft(BorderStyle.THIN);
+                style2.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style2.setBorderRight(BorderStyle.THIN);
+                style2.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                Font font1 = xssfWorkbook.createFont();
+                font1.setBold(true);
+//                font.setUnderline(Font.U_SINGLE);
+                font1.setColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
+                style2.setFont(font1);
+
+                CellStyle style3=xssfWorkbook.createCellStyle();
+                style3.setFillForegroundColor(HSSFColor.HSSFColorPredefined.RED.getIndex());
+                style3.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+                style3.setBorderBottom(BorderStyle.THIN);
+                style3.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style3.setBorderTop(BorderStyle.THIN);
+                style3.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style3.setBorderLeft(BorderStyle.THIN);
+                style3.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                style3.setBorderRight(BorderStyle.THIN);
+                style3.setBottomBorderColor(IndexedColors.BLACK.getIndex());
+                Font font2 = xssfWorkbook.createFont();
+                font2.setBold(true);
+//                font.setUnderline(Font.U_SINGLE);
+                font2.setColor(HSSFColor.HSSFColorPredefined.WHITE.getIndex());
+                style3.setFont(font2);
+
                 HSSFRow row=xssfSheet.createRow(0);
                 HSSFCell cell=row.createCell(0);
                 cell.setCellValue("KUN");
-
+                cell.setCellStyle(style2);
 
                 cell=row.createCell(1);
                 cell.setCellValue("SOAT");
-
+                cell.setCellStyle(style2);
 
                 cell=row.createCell(2);
                 cell.setCellValue("ISM");
-
+                cell.setCellStyle(style2);
 
                 cell=row.createCell(3);
                 cell.setCellValue("Sababli");
-
+                cell.setCellStyle(style2);
 
 
 
@@ -67,20 +128,24 @@ public class WriteToExcel {
                     row=xssfSheet.createRow(i+1);
                     cell=row.createCell(0);
                     cell.setCellValue(users.get(i).getDate());
+                    cell.setCellStyle(style);
 
+                    cell=row.createCell(1);
+                    cell.setCellValue(users.get(i).getTime());
 
-                     cell=row.createCell(1);
-                     cell.setCellValue(users.get(i).getTime());
+                    cell=row.createCell(2);
+                    cell.setCellValue(users.get(i).getUserName());
 
-
-                cell=row.createCell(3);
+                    cell=row.createCell(3);
                     String reason = users.get(i).getReason();
                     if (reason==null){
                         cell.setCellValue("-");
                     }else {
                         cell.setCellValue(users.get(i).getReason());
                     }
-            }
+                    cell.setCellStyle(style);
+
+                }
                 xssfWorkbook.write(fileOutputStream);
                 xssfWorkbook.close();
             } catch (FileNotFoundException e) {
