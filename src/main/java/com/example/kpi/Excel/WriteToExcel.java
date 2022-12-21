@@ -63,18 +63,22 @@ public class WriteToExcel {
                 HSSFRow row=xssfSheet.createRow(0);
                 HSSFCell cell=row.createCell(0);
                 cell.setCellValue("KUN");
+                cell.setCellStyle(style);
 
 
                 cell=row.createCell(1);
                 cell.setCellValue("SOAT");
+                cell.setCellStyle(style);
 
 
                 cell=row.createCell(2);
                 cell.setCellValue("ISM");
+                cell.setCellStyle(style);
 
 
                 cell=row.createCell(3);
                 cell.setCellValue("Sababli");
+                cell.setCellStyle(style);
 
 
 
@@ -88,9 +92,11 @@ public class WriteToExcel {
 
                     cell=row.createCell(1);
                     cell.setCellValue(users.get(i).getTime());
+                    cell.setCellStyle(style);
 
                     cell=row.createCell(2);
                     cell.setCellValue(users.get(i).getUserName());
+                    cell.setCellStyle(style);
 
                     cell=row.createCell(3);
                     String reason = users.get(i).getReason();
