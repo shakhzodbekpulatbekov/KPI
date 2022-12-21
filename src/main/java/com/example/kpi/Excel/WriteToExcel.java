@@ -53,17 +53,6 @@ public class WriteToExcel {
                 style.setBorderRight(BorderStyle.THIN);
                 style.setBottomBorderColor(IndexedColors.BLACK.getIndex());
 
-                CellStyle style1=xssfWorkbook.createCellStyle();
-                style1.setFillForegroundColor(HSSFColor.HSSFColorPredefined.YELLOW.getIndex());
-                style1.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-                style1.setBorderBottom(BorderStyle.THIN);
-                style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
-                style1.setBorderTop(BorderStyle.THIN);
-                style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
-                style1.setBorderLeft(BorderStyle.THIN);
-                style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
-                style1.setBorderRight(BorderStyle.THIN);
-                style1.setBottomBorderColor(IndexedColors.BLACK.getIndex());
 //                Font font = xssfWorkbook.createFont();
 //                font.setBold(true);
 ////                font.setUnderline(Font.U_SINGLE);
