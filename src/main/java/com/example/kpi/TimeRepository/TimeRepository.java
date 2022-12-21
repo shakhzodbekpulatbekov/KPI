@@ -9,7 +9,7 @@ import java.util.List;
 public interface TimeRepository extends JpaRepository<TimeEntity,Integer> {
     List<TimeEntity> findByDate(String date);
 
-    List<TimeEntity>findByUserNameAndId(String name);
+    List<TimeEntity>findByUserName(String name);
 
     @Query(value = "select * from time_entity order by id", nativeQuery = true)
     List<TimeEntity> findAllSorted();
