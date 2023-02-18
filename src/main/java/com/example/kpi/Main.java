@@ -326,7 +326,7 @@ public class Main extends TelegramLongPollingBot {
                 if (addTime){
                     sendMessage.setText("✅.");
                 }else {
-                    sendMessage.setText("Bu xodim allaqachon ishda❗️");
+                    sendMessage.setText("Bu xodim allaqachon ishga kelgan❗️");
                 }
 
                 sendMessage.setChatId(String.valueOf(chatId));
