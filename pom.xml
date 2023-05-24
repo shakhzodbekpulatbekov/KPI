@@ -120,7 +120,7 @@
                 </configuration>
             </plugin>
         </plugins>
-             <finalName>kpi</finalName>
+             <finalName>currency</finalName>
     </build>
 
 </project>

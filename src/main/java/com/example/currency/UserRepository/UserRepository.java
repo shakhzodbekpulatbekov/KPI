@@ -1,7 +1,6 @@
-package com.example.kpi.UserRepository;
+package com.example.currency.UserRepository;
 
-import com.example.kpi.UserEntity.UserEntity;
-import org.springframework.data.domain.Example;
+import com.example.currency.UserEntity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

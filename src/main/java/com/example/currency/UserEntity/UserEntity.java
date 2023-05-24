@@ -1,6 +1,5 @@
-package com.example.kpi.UserEntity;
+package com.example.currency.UserEntity;
 
-import jdk.jfr.Enabled;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
