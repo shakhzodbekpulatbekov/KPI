@@ -1,10 +1,10 @@
-package com.example.currency;
+package com.example.kpi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class CurrencyApplicationTests {
+class KpiApplicationTests {
 
     @Test
     void contextLoads() {
