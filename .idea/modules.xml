@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Currency.iml" filepath="$PROJECT_DIR$/Currency.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Kpi.iml" filepath="$PROJECT_DIR$/Kpi.iml" />
     </modules>
   </component>
 </project>
